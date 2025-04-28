@@ -62,7 +62,7 @@ N'hésitez pas à proposer des améliorations via Pull Request ou à ouvrir une 
 
 ## 📜 Licence
 
-Projet développé pour le **Pôle Santé Sexuelle — Direction de la Santé Publique — Ville de Paris**.  
+Projet développé par Dr Aurélia Manns pour le **Pôle Santé Sexuelle — Direction de la Santé Publique — Ville de Paris**.  
 Utilisation et modifications libres sous réserve de mentionner l'origine.
 
 ---
