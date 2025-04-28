@@ -1,0 +1,41 @@
+---
+title: "Rapport de Dépistage IST"
+author: "Ville de Paris"
+output: html_document
+params:
+  conclusion: NULL
+  recap_table: NULL
+---
+
+
+
+
+
+
+```{r echo=FALSE, results = "asis"}
+
+library(knitr)
+
+# Print conclusions section
+if (!is.null(params$conclusion)) {
+  cat("<h2>Conclusion</h2>")
+  
+  if (params$conclusion$urgence != "") 
+    cat("<div style='background-color:#FFDDDD; padding:10px; margin-bottom:10px;'><strong>Urgence:</strong> ", params$conclusion$urgence, "</div>")
+  
+  if (params$conclusion$ttt_recommandation != "") 
+    cat("<div style='background-color:#FFF9C4; padding:10px; margin-bottom:10px;'><strong>Recommandation:</strong> ", params$conclusion$ttt_recommandation, "</div>")
+  
+  if (params$conclusion$tests_prelevements != "") 
+    cat("<div style='background-color:#EAF2F8; padding:10px; margin-bottom:10px;'><strong>Tests et Prélèvements:</strong> ", params$conclusion$tests_prelevements, "</div>")
+  
+  if (params$conclusion$prep_recommandation != "") 
+    cat("<div style='background-color:#E8F8E9; padding:10px; margin-bottom:10px;'><strong>Recommandation PrEP:</strong> ", params$conclusion$prep_recommandation, "</div>")
+}
+
+# Print the recap table
+if (!is.null(params$recap_table)) {
+  cat("<h2>Récapitulatif des Réponses</h2>")
+  print(kable(params$recap_table, format = "html", table.attr = "class='table table-bordered'"))
+}
+```

@@ -1,0 +1,57 @@
+---
+title: "Rapport de Dépistage IST"
+output:
+  pdf_document:
+    latex_engine: xelatex
+params:
+  conclusion: NULL
+  recap_table: NULL
+  header-includes:
+  - \definecolor{primary}{RGB}{41, 128, 185}
+  - \definecolor{red}{RGB}{255, 77, 77}
+  - \definecolor{yellow}{RGB}{255, 204, 77}
+  - \definecolor{blue}{RGB}{41, 128, 185}
+  - \definecolor{green}{RGB}{46, 204, 113}
+---
+
+
+```{r echo=FALSE}
+
+library(tinytex)
+# Render conclusion
+if (!is.null(params$conclusion)) {
+  conclusion <- params$conclusion
+  
+  # Section Title with LaTeX styling
+  cat("\\section*{\\textcolor{primary}{Conclusion}}\n\n")
+  
+  # Urgence Section
+  if (conclusion$urgence != "") 
+    cat("\\noindent\\fcolorbox{red}{white}{\\parbox{0.9\\linewidth}{\\textbf{Urgence:} ",
+        conclusion$urgence, 
+        "}}\n\n")
+  
+  # Treatment Recommendation Section
+  if (conclusion$ttt_recommandation != "") 
+    cat("\\noindent\\fcolorbox{yellow}{white}{\\parbox{0.9\\linewidth}{\\textbf{Recommandation:} ",
+        conclusion$ttt_recommandation, 
+        "}}\n\n")
+  
+  # Tests et Prélèvements Section
+  if (conclusion$tests_prelevements != "") 
+    cat("\\noindent\\fcolorbox{blue}{white}{\\parbox{0.9\\linewidth}{\\textbf{Tests et Prélèvements:} ",
+        conclusion$tests_prelevements, 
+        "}}\n\n")
+  
+  # Recommandation PrEP Section
+  if (conclusion$prep_recommandation != "") 
+    cat("\\noindent\\fcolorbox{green}{white}{\\parbox{0.9\\linewidth}{\\textbf{Recommandation PrEP:} ",
+        conclusion$prep_recommandation, 
+        "}}\n\n")
+}
+
+# Render recap table
+if (!is.null(params$recap_table)) {
+  cat("## Récapitulatif des Réponses\n\n")
+  knitr::kable(params$recap_table, format = "latex")
+}
