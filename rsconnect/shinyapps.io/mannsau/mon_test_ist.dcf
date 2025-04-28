@@ -1,0 +1,10 @@
+name: mon_test_ist
+title:
+username: mannsau
+account: mannsau
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13611905
+bundleId: 9718181
+url: https://mannsau.shinyapps.io/mon_test_ist/
+version: 1
